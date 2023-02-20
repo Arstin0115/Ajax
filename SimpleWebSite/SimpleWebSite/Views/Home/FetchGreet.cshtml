@@ -1,0 +1,31 @@
+﻿<button id="getAsync" class="btn btn-primary">非同步Get</button>
+<button id="postAsync" class="btn btn-primary">非同步Post</button>
+<img id="progress" src="~/images/Hourglass.gif" style="width:32px;height:32px;display:none" />
+<div id="result"></div>
+
+@section Scripts
+    {
+    <script>
+        $('#getAsync').on("click", function () {
+            //alert('getAsync');
+            var p = encodeURI("Name=陳曉明");
+            $("#progress").show();
+            fetch("https://localhost:7074/Ajax/Greet?" + p,{method:"GET"}).then(function(data){
+                if(data.ok){
+                    $("#progress").hide();
+                    return data.text(); //return data.json();
+                }
+            }).then(function(data){
+                $("#result").text(data);
+            }).catch(function(err){
+                $("#progress").hide();
+                alert(err);
+            });
+        });
+
+        $('#postAsync').on("click", function () {
+            //alert('postAsync');
+            
+        });
+    </script>
+}
