@@ -1,6 +1,6 @@
 ﻿<button id="getAsync" class="btn btn-primary">非同步Get</button>
 <button id="postAsync" class="btn btn-primary">非同步Post</button>
-<img id="progress" src="~/images/Hourglass.gif" style="width:32px;height:32px;display:none" />
+<img id="progress" src="~/images/Plant.gif" style="width:32px;height:32px;display:none" />
 <div id="result"></div>
 
 @section Scripts
@@ -25,7 +25,27 @@
 
         $('#postAsync').on("click", function () {
             //alert('postAsync');
-            
+            var data = {
+                Name:"呂小明"
+            };
+            $("#progress").show();
+            fetch("https://localhost:7074/Ajax/FetchGreet", {
+                method: "POST",
+                body:JSON.stringify(data),
+                headers:{
+                    "content-type":"application/json"
+                }
+            }).then(function (data) {
+                    if (data.ok) {
+                        $("#progress").hide();
+                        return data.text(); //return data.json();
+                }
+            }).then(function (data) {
+                $("#result").text(data);
+            }).catch(function (err) {
+                $("#progress").hide();
+                alert(err);
+            });
         });
     </script>
 }

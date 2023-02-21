@@ -32,8 +32,9 @@ namespace SimpleWebSite.Controllers
         }
 
         [HttpPost]
-        public string FetchPostGreet([FromBody]Parameter p)
+        public string FetchGreet([FromBody]Parameter p)
         {
+            Thread.Sleep(3000);
             return $"Hello {p.Name}";
         }
 

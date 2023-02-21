@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\images\\Hourglass.gif"
     },
     {
+      "Id": "C:\\AJAX\\SimpleWebSite\\SimpleWebSite\\wwwroot\\images\\Plant.gif",
+      "PackagePath": "staticwebassets\\images\\Plant.gif"
+    },
+    {
       "Id": "C:\\AJAX\\SimpleWebSite\\SimpleWebSite\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

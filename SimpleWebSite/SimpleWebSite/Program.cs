@@ -13,7 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 var NorthwindconnectionString = builder.Configuration.GetConnectionString("Northwind");
 builder.Services.AddDbContext<NorthwindContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(NorthwindconnectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

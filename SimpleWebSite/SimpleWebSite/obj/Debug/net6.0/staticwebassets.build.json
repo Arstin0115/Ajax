@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g6z1C+o2sQL8kWTItvDnJ5EQwzpYwnoJ3R61HCFHU38=",
+  "Hash": "Rzf+BG3zqwapm3vff7JNYexej6Rv3IjV7lYkXXnyfZk=",
   "Source": "SimpleWebSite",
   "BasePath": "_content/SimpleWebSite",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Hourglass.gif"
+    },
+    {
+      "Identity": "C:\\AJAX\\SimpleWebSite\\SimpleWebSite\\wwwroot\\images\\Plant.gif",
+      "SourceId": "SimpleWebSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AJAX\\SimpleWebSite\\SimpleWebSite\\wwwroot\\",
+      "BasePath": "_content/SimpleWebSite",
+      "RelativePath": "images/Plant.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Plant.gif"
     },
     {
       "Identity": "C:\\AJAX\\SimpleWebSite\\SimpleWebSite\\wwwroot\\js\\site.js",
