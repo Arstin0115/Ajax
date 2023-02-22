@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EmployeesService.Models;
 using EmployeesService.DTO;
+using Microsoft.AspNetCore.Cors;
 
 namespace EmployeesService.Controllers
 {
+    [EnableCors("AllowAny")]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
@@ -20,7 +22,7 @@ namespace EmployeesService.Controllers
         {
             _context = context;
         }
-
+        
         // GET: api/Employees
         [HttpGet]
         public async Task<IEnumerable<EmployeeDTO>> GetEmployees()

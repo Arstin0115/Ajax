@@ -1,0 +1,123 @@
+﻿<button id="getEmployees" class="btn btn-success">GetEmployees</button>
+<button id="getEmployeesById" class="btn btn-success">GetEmployeesById</button>
+<button id="postEmployees" class="btn btn-success">PostEmployees</button>
+<button id="putEmployees" class="btn btn-success">PutEmployees</button>
+<button id="delEmployees" class="btn btn-success">DelEmployees</button>
+<div id="employeeList"></div>
+<input type="text" id="empId"/>
+
+
+@section Scripts
+{
+    <script>
+        var webApiBaseAddr = "https://localhost:7131";
+
+        $("#getEmployees").on("click",(event)=>{
+            //alert("getEmployees");
+            fetch(`${webApiBaseAddr}/api/Employees`, {
+                method: "GET",
+            }).then(result => {
+                if (result.ok){
+                    return result.json();
+                }
+
+            }).then(data => {
+                //alert(JSON.stringify(data));
+                var str ='<ul>'
+                $.each(data,function(index,item){
+                    str +=`<li>${item.employeeId},${item.firstName},${item.lastName},${item.title}`;
+                });
+                str += '</ul>'
+                $("#employeeList").html(str);
+            }).catch(err => {
+                alert(err);
+
+            });
+        });
+
+        $("#getEmployeesById").on("click",(event)=>{
+            //alert("getEmployeesById");
+            var empId = $("#empId").val();
+            fetch(`${webApiBaseAddr}/api/Employees/${empId}`,{
+                method:"GET"
+            
+            }).then(result => {
+                if(result.ok){
+                    return result.json();
+                }
+
+            }).then(data => {
+                alert(JSON.stringify(data));
+                
+            }).catch(err => {
+                alert(err);
+
+            });
+        });
+
+        $("#postEmployees").on("click", (event) => {
+            //alert("postEmployees");
+            var emp={
+                EmployeeId:0,
+                FirstName:"student",
+                LastName:"A",
+                Title:"Sales"
+            };
+            fetch(`${webApiBaseAddr}/api/Employees`, {
+                method:"POST",
+                body:JSON.stringify(emp),
+                headers:{
+                    "content-type":"application/json"
+                }
+            }).then(result => {
+                if(result.ok){
+                    return result.text();
+                }
+            }).then(data => {
+                alert(data);
+            }).catch(err => {
+                alert(err);
+            });
+        });
+
+        $("#putEmployees").on("click", (event) => {
+            //alert("putEmployees");
+            var emp={
+                EmployeeId:11,
+                FirstName:"studen",
+                LastName:"A",
+                Title:"Sales Manger"
+            };
+            fetch(`${webApiBaseAddr}/api/Employees/11`,{
+                method:"PUT",
+                body:JSON.stringify(emp),
+                headers:{
+                    "content-type":"application/json"
+                }            
+            }).then(result => {
+                if(result.ok){
+                    return result.text();
+                }
+            }).then(data => {
+                alert(data);
+            }).catch(err => {
+                alert(err);
+            });
+        });
+
+        $("#delEmployees").on("click",(event)=>{
+            //alert("delEmployees");
+            fetch(`${webApiBaseAddr}/api/Employees/11`, {
+                method:"DELETE"
+            }).then(result => {
+                if (result.ok) {
+                    return result.text();
+                }
+            }).then(data => {
+                alert(data);
+            }).catch(err => {
+                alert(err);
+            });
+        });
+    </script>
+}

@@ -9,7 +9,16 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
 {
     options.UseSqlServer(connectionString: NorthwindConnectionString);
 });
+
 builder.Services.AddControllers();
+var MyAllowSpecificOrigins = "AllowAny";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: MyAllowSpecificOrigins,
+        policy => policy.WithOrigins("*").WithHeaders("*").WithMethods("*")
+        );
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,6 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
