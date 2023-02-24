@@ -229,7 +229,7 @@
                     let _this = this;
                     var ret = confirm("確定要刪除嗎?!");
                     if(ret == true){
-                        axios.delete(`${webApiBaseAddr}/api/Employees`).then(response=>{
+                        axios.delete(`${webApiBaseAddr}/api/Employees/${employeeId}`).then(response=>{
                             alert(response.data);
                             _this.filterEmployees();
                         });
