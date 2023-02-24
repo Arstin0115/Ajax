@@ -36,6 +36,20 @@ namespace EmployeesService.Controllers
             });
         }
 
+        [HttpPost("Filter")]
+        public async Task<IEnumerable<EmployeeDTO>> FilterEmployees([FromBody]EmployeeDTO employeesDTO)
+        {
+            return _context.Employees.Where(emp => emp.FirstName.Contains(employeesDTO.FirstName) || emp.LastName.Contains(employeesDTO.LastName)|| emp.Title.Contains(employeesDTO.Title)).Select(emp => new EmployeeDTO {
+                EmployeeId = emp.EmployeeId,
+                FirstName = emp.FirstName,
+                LastName = emp.LastName,
+                Title = emp.Title,
+
+            });
+                
+           
+        }
+
         // GET: api/Employees/5
         [HttpGet("{id}")]
         public async Task<EmployeeDTO> GetEmployees(int id)
